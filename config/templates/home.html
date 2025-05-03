@@ -3,10 +3,59 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>My Django Hello Page</title>
+    <title>じゃんけんゲーム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .choices {
+            margin: 20px;
+        }
+        .choice-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .choices-display {
+            margin: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <h1>こんにちは！Djangoアプリへようこそ</h1>
-    <p>テンプレートを使って表示しています。</p>
+    <h1>じゃんけんゲーム</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="choices">
+            <button type="submit" name="choice" value="グー" class="choice-btn">グー</button>
+            <button type="submit" name="choice" value="チョキ" class="choice-btn">チョキ</button>
+            <button type="submit" name="choice" value="パー" class="choice-btn">パー</button>
+        </div>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        {% if result == '勝ち' %}
+            <p style="color: green;">{{ result }}！</p>
+        {% elif result == '負け' %}
+            <p style="color: red;">{{ result }}！</p>
+        {% else %}
+            <p style="color: blue;">{{ result }}！</p>
+        {% endif %}
+    </div>
+    <div class="choices-display">
+        <p>あなた: {{ player_choice }}</p>
+        <p>コンピュータ: {{ computer_choice }}</p>
+    </div>
+    {% endif %}
 </body>
 </html>
