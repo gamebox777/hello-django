@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
+from . import views  # ← 追加
 
 def hello(request):
     return HttpResponse("Hello, world!")
