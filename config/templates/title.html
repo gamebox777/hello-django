@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>じゃんけんゲーム - タイトル</title>
+    <style>
+        body { text-align: center; margin: 50px; font-family: Arial, sans-serif; }
+        .start-btn { font-size: 24px; padding: 15px 40px; margin-top: 40px; cursor: pointer; }
+        h1 { font-size: 48px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>じゃんけんゲーム</h1>
+    {% if my_record %}
+        <div style="font-size:20px; margin-bottom:20px;">あなたの連勝記録：<b>{{ my_record.win_streak }}</b> 連勝</div>
+    {% endif %}
+    <form action="/game/" method="get">
+        <button class="start-btn" type="submit">ゲームスタート</button>
+    </form>
+    <h2 style="margin-top:40px;">連勝数ランキング</h2>
+    <table style="margin: 0 auto; border-collapse: collapse; font-size:18px;">
+        <tr style="background:#eee;">
+            <th style="padding:8px 20px; border:1px solid #ccc;">名前</th>
+            <th style="padding:8px 20px; border:1px solid #ccc;">連勝数</th>
+            <th style="padding:8px 20px; border:1px solid #ccc;">記録日時</th>
+        </tr>
+        {% for rec in all_records %}
+        <tr>
+            <td style="padding:8px 20px; border:1px solid #ccc;">{{ rec.name }}</td>
+            <td style="padding:8px 20px; border:1px solid #ccc;">{{ rec.win_streak }}</td>
+            <td style="padding:8px 20px; border:1px solid #ccc;">{{ rec.played_at|date:"Y-m-d H:i" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">記録がありません</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html> 

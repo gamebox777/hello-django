@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>X-DAY 結果</title>
+    <style>
+        body { background: #181a1b; color: #f1f1f1; text-align: center; margin: 50px; font-family: 'Segoe UI', Arial, sans-serif; }
+        .result { font-size: 32px; margin: 40px 0 20px 0; color: #00e6e6; text-shadow: 1px 1px 6px #000; }
+        .xday { font-size: 28px; margin: 20px 0; color: #00e6e6; }
+        .comment { font-size: 22px; margin: 30px 0; color: #00e6e6; text-shadow: 1px 1px 6px #000; }
+        .lp { font-size: 20px; margin: 10px 0; color: #fff; }
+        .btn { font-size: 18px; padding: 10px 30px; margin: 20px; cursor: pointer; background: #222; color: #fff; border: 2px solid #444; border-radius: 8px; transition: background 0.2s, color 0.2s; }
+        .btn:hover { background: #444; color: #00e6e6; }
+        h1 { color: #00e6e6; text-shadow: 2px 2px 8px #000; }
+    </style>
+</head>
+<body>
+    <h1>X-DAY 診断結果</h1>
+    <div class="lp">あなたのLP：<b>{{ lp }}</b></div>
+    <div class="result">余命年数：<b>{{ lifespan_years }}</b> 年</div>
+    <div class="xday">X-DAY（余命到達日）：<b>{{ xday }}</b></div>
+    <div class="comment">{{ comment }}</div>
+    <form action="/xday/" method="get">
+        <button class="btn" type="submit">再挑戦</button>
+    </form>
+    <form action="/xday/history/" method="get">
+        <button class="btn" type="submit">履歴一覧へ</button>
+    </form>
+</body>
+</html> 

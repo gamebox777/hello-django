@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>X-DAY 余命検索サービス</title>
+    <style>
+        body {
+            background: #181a1b;
+            color: #f1f1f1;
+            text-align: center;
+            margin: 50px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .start-btn {
+            font-size: 24px;
+            padding: 15px 40px;
+            margin-top: 40px;
+            cursor: pointer;
+            background: #222;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .start-btn:hover {
+            background: #444;
+            color: #00e6e6;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #00e6e6;
+            text-shadow: 2px 2px 8px #000;
+        }
+        .desc {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        .history-btn {
+            font-size: 18px;
+            padding: 10px 30px;
+            margin-top: 30px;
+            background: #222;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .history-btn:hover {
+            background: #444;
+            color: #00e6e6;
+        }
+    </style>
+</head>
+<body>
+    <h1>X-DAY 余命検索サービス</h1>
+    <div class="desc">10問のクイズであなたの余命を診断します。</div>
+    <form method="post">
+        {% csrf_token %}
+        <button class="start-btn" type="submit">スタート</button>
+    </form>
+    <form action="/xday/history/" method="get">
+        <button class="history-btn" type="submit">履歴一覧を見る</button>
+    </form>
+</body>
+</html> 

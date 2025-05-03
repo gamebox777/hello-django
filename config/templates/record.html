@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>連勝記録</title>
+    <style>
+        body { text-align: center; margin: 50px; font-family: Arial, sans-serif; }
+        .form-area { margin: 30px auto; display: inline-block; }
+        .input-name { font-size: 18px; padding: 5px; }
+        .record-btn { font-size: 18px; padding: 8px 24px; margin-left: 10px; }
+        .back-btn { font-size: 16px; margin-top: 30px; }
+        .message { color: green; font-size: 18px; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>連勝記録</h1>
+    <p>あなたの連勝数：<b>{{ last_streak }}</b></p>
+    {% if last_streak > 0 %}
+        <form method="post" class="form-area">
+            {% csrf_token %}
+            <input type="text" name="name" class="input-name" placeholder="名前を入力" value="{{ default_name }}">
+            <button type="submit" class="record-btn">記録する</button>
+        </form>
+    {% else %}
+        <div style="color: green; font-size: 18px; margin: 20px;">連勝数が0のため記録できません。</div>
+    {% endif %}
+    <form action="/" method="get">
+        <button type="submit" class="back-btn">タイトルに戻る</button>
+    </form>
+</body>
+</html> 

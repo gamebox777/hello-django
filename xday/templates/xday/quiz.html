@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>X-DAY クイズ</title>
+    <style>
+        body { background: #181a1b; color: #f1f1f1; text-align: center; margin: 50px; font-family: 'Segoe UI', Arial, sans-serif; }
+        .question { font-size: 28px; margin: 40px 0 30px 0; color: #00e6e6; text-shadow: 1px 1px 6px #000; }
+        .btn { font-size: 22px; padding: 10px 40px; margin: 20px; cursor: pointer; background: #222; color: #fff; border: 2px solid #444; border-radius: 8px; transition: background 0.2s, color 0.2s; }
+        .btn:hover { background: #444; color: #00e6e6; }
+        .progress { font-size: 18px; margin: 20px; color: #ccc; }
+        h1 { color: #00e6e6; text-shadow: 2px 2px 8px #000; }
+    </style>
+</head>
+<body>
+    <h1>X-DAY クイズ</h1>
+    <div class="progress">Q{{ current }} / 10</div>
+    <div class="question">{{ question.text }}</div>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn" name="choice" value="Yes" type="submit">Yes</button>
+        <button class="btn" name="choice" value="No" type="submit">No</button>
+    </form>
+</body>
+</html> 

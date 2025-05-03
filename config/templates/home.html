@@ -28,11 +28,20 @@
             margin: 20px;
             font-size: 18px;
         }
+        .streak {
+            margin: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+        .back-btn {
+            font-size: 16px;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
     <h1>じゃんけんゲーム</h1>
-    
+    <div class="streak">現在の連勝数：{{ win_streak }}</div>
     <form method="post">
         {% csrf_token %}
         <div class="choices">
@@ -45,11 +54,11 @@
     {% if result %}
     <div class="result">
         {% if result == '勝ち' %}
-            <p style="color: green;">{{ result }}！</p>
+            <span style="color: green;">{{ result }}！</span>
         {% elif result == '負け' %}
-            <p style="color: red;">{{ result }}！</p>
+            <span style="color: red;">{{ result }}！</span>
         {% else %}
-            <p style="color: blue;">{{ result }}！</p>
+            <span style="color: blue;">{{ result }}！</span>
         {% endif %}
     </div>
     <div class="choices-display">
@@ -57,5 +66,8 @@
         <p>コンピュータ: {{ computer_choice }}</p>
     </div>
     {% endif %}
+    <form action="/" method="get">
+        <button type="submit" class="back-btn">タイトルに戻る</button>
+    </form>
 </body>
 </html>

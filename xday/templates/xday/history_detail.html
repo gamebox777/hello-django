@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>X-DAY 履歴詳細</title>
+    <style>
+        body { background: #181a1b; color: #f1f1f1; text-align: center; margin: 50px; font-family: 'Segoe UI', Arial, sans-serif; }
+        table { margin: 0 auto; border-collapse: collapse; font-size:18px; background: #222; color: #f1f1f1; }
+        th, td { padding: 8px 20px; border: 1px solid #444; }
+        th { background: #333; color: #00e6e6; }
+        tr:nth-child(even) { background: #181a1b; }
+        .btn { font-size: 16px; padding: 6px 18px; margin: 0 4px; background: #222; color: #fff; border: 2px solid #444; border-radius: 8px; transition: background 0.2s, color 0.2s; }
+        .btn:hover { background: #444; color: #00e6e6; }
+        .result { font-size: 22px; margin: 20px 0; color: #00e6e6; text-shadow: 1px 1px 6px #000; }
+        h1 { color: #00e6e6; text-shadow: 2px 2px 8px #000; }
+    </style>
+</head>
+<body>
+    <h1>X-DAY 履歴詳細</h1>
+    <div class="result">診断日時：{{ session.started_at|date:"Y-m-d H:i" }} / LP：{{ session.lp_total }} / 余命年数：{{ result.lifespan_years }} / X-DAY：{{ result.xday_date }}</div>
+    <table>
+        <tr>
+            <th>設問</th>
+            <th>あなたの回答</th>
+            <th>正誤</th>
+        </tr>
+        {% for a in answers %}
+        <tr>
+            <td>{{ a.question.text }}</td>
+            <td>{{ a.user_choice }}</td>
+            <td>{% if a.is_correct %}○{% else %}×{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/xday/history/" method="get">
+        <button class="btn" type="submit">履歴一覧へ戻る</button>
+    </form>
+</body>
+</html> 
